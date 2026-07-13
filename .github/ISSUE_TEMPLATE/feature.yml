@@ -1,0 +1,48 @@
+name: Feature request
+ description: Start a spec-driven feature or behavioral change
+ title: "[Feature]: "
+ labels:
+   - feature
+ body:
+   - type: markdown
+     attributes:
+       value: |
+         Describe the product need. The Issue is the input to Spec Kit, not a replacement for `spec.md`.
+   - type: textarea
+     id: goal
+     attributes:
+       label: Goal
+       description: What outcome should be achieved?
+     validations:
+       required: true
+   - type: textarea
+     id: why
+     attributes:
+       label: Why
+       description: Why is this needed now, and who benefits?
+     validations:
+       required: true
+   - type: textarea
+     id: scenarios
+     attributes:
+       label: User scenarios
+       description: Describe representative user journeys and expected outcomes.
+     validations:
+       required: true
+   - type: textarea
+     id: constraints
+     attributes:
+       label: Constraints
+       description: Record compatibility, security, performance, cost, legal, or platform constraints.
+   - type: textarea
+     id: out-of-scope
+     attributes:
+       label: Out of scope
+       description: State what this change must not include.
+   - type: textarea
+     id: done
+     attributes:
+       label: Done when
+       description: List observable, testable completion conditions.
+     validations:
+       required: true
