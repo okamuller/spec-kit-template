@@ -30,6 +30,7 @@ fi
 
 echo "==> Initializing Spec Kit for $PROJECT_NAME"
 specify init --here --force \
+  --script sh \
   --integration codex \
   --integration-options='--skills' \
   --ignore-agent-tools
