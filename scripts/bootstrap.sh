@@ -14,13 +14,15 @@ fi
 ./scripts/install-speckit.sh
 export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 
+REPOSITORY_FULL_NAME=''
 if command -v gh >/dev/null 2>&1; then
+  REPOSITORY_FULL_NAME="$(gh repo view --json nameWithOwner --jq '.nameWithOwner' 2>/dev/null || true)"
   PROJECT_NAME="$(gh repo view --json name --jq '.name' 2>/dev/null || basename "$ROOT_DIR")"
 else
   PROJECT_NAME="$(basename "$ROOT_DIR")"
 fi
 
-if [[ "$PROJECT_NAME" == 'spec-kit-template' ]]; then
+if [[ "$REPOSITORY_FULL_NAME" == 'okamuller/spec-kit-template' ]]; then
   echo 'Refusing to initialize the template source repository.' >&2
   echo 'Create a repository from this template, then run make init there.' >&2
   exit 1
@@ -37,12 +39,12 @@ from pathlib import Path
 import sys
 
 project_name = sys.argv[1]
-for relative in ("README.md", "AGENTS.md", "CLAUDE.md"):
-    path = Path(relative)
-    if not path.exists():
-        continue
-    content = path.read_text(encoding="utf-8")
-    path.write_text(content.replace("__PROJECT_NAME__", project_name), encoding="utf-8")
+readme = Path('README.md')
+if readme.exists():
+    content = readme.read_text(encoding='utf-8')
+    if content.startswith('# Spec Kit Template\n'):
+        content = content.replace('# Spec Kit Template\n', f'# {project_name}\n', 1)
+    readme.write_text(content, encoding='utf-8')
 PY
 
 cat > "$MARKER_FILE" <<EOF
