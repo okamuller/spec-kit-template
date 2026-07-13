@@ -19,7 +19,6 @@ if [[ -f .template-initialized ]]; then
     --integration codex \
     --integration-options='--skills' \
     --ignore-agent-tools
-  echo "spec_kit=$VERSION" > /tmp/spec-kit-version-line
   python3 - "$VERSION" <<'PY'
 from pathlib import Path
 import sys
