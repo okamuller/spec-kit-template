@@ -66,10 +66,8 @@ make ci
 
 ## テンプレートリポジトリ設定
 
-テンプレートの管理リポジトリで一度だけ次を実行すると、GitHubのテンプレート設定と推奨マージ設定を適用できます。
+このテンプレート元リポジトリでは、GitHubの **Settings > General** を開き、`Template repository`を一度だけ有効にしてください。続けてPull Requests設定でsquash mergeだけを有効にし、マージ後のブランチ自動削除を有効にします。
 
-```bash
-make github-config
-```
+Codespacesの自動認証トークンは通常、リポジトリ設定を変更する`Administration: write`権限を持たないため、Codespace内の`make github-config`はHTTP 403になることがあります。
 
-このコマンドはGitHub上の設定を変更するため、`make init`からは分離しています。
+`make github-config`を使う場合は、対象リポジトリへの`Administration: Read and write`権限を持つfine-grained personal access tokenをCodespaces secretの`GH_ADMIN_TOKEN`として登録してから実行してください。
