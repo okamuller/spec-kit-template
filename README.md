@@ -1,4 +1,4 @@
-# __PROJECT_NAME__
+# Spec Kit Template
 
 GitHub Spec Kitを使った、クラウド実行向けの仕様駆動開発テンプレートです。GitHub Codespaces、Codexクラウドタスク、Codex CLIを同じリポジトリ構成と標準コマンドで運用できます。
 
