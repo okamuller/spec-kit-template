@@ -16,6 +16,7 @@ export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 
 if [[ -f .template-initialized ]]; then
   specify init --here --force \
+    --script sh \
     --integration codex \
     --integration-options='--skills' \
     --ignore-agent-tools
